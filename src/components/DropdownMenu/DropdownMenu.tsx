@@ -4,6 +4,7 @@ import { ReactComponent as ArrowIcon } from "../../icons/arrow.svg";
 import { ReactComponent as BellIcon } from "../../icons/bell.svg";
 import { ReactComponent as CogIcon } from "../../icons/cog.svg";
 import { MenuNames } from "../../models/enums/menuNames";
+import "./DropdownMenu.css";
 import styles from "./DropdownMenu.module.scss";
 
 type DropdownItemProps = {
@@ -29,7 +30,7 @@ const DropdownItem = ({
 
 export const DropdownMenu = () => {
   const [activeMenu, setActiveMenu] = useState<MenuNames>(MenuNames.Main);
-  const [menuHeight, setMenuHeight] = useState<number>(0);
+  const [menuHeight, setMenuHeight] = useState<number>(130);
 
   const calcHeight = (el: HTMLElement) => {
     const height = el.offsetHeight;
@@ -39,14 +40,11 @@ export const DropdownMenu = () => {
   const nodeRef = useRef(null);
   const nodeRef2 = useRef(null);
   return (
-    <div
-      className={styles.dropdown}
-      style={{ height: menuHeight === 0 ? 130 : menuHeight }}
-    >
+    <div className={styles.dropdown}>
       <CSSTransition
         in={activeMenu === MenuNames.Main}
         unmountOnExit
-        timeout={1}
+        timeout={500}
         classNames="menu-primary"
         nodeRef={nodeRef}
         onEnter={calcHeight}
@@ -65,7 +63,7 @@ export const DropdownMenu = () => {
       <CSSTransition
         in={activeMenu === MenuNames.Settings}
         unmountOnExit
-        timeout={1}
+        timeout={500}
         classNames="menu-secondary"
         nodeRef={nodeRef2}
         onEnter={calcHeight}

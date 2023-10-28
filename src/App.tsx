@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { DropdownMenu } from "./components/DropdownMenu/DropdownMenu";
+import { NavItem, Navbar } from "./components/Navbar/Navbar";
+import { ReactComponent as BellIcon } from "./icons/bell.svg";
+import { ReactComponent as BoltIcon } from "./icons/bolt.svg";
+import { ReactComponent as CaretIcon } from "./icons/caret.svg";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Navbar>
+      <NavItem icon={<BellIcon />} />
+      <NavItem icon={<BoltIcon />} />
+      <NavItem icon={<CaretIcon />}>
+        <DropdownMenu />
+      </NavItem>
+    </Navbar>
   );
-}
+};
 
 export default App;
